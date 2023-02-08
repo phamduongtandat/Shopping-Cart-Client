@@ -1,11 +1,11 @@
 import React from 'react'
 
-function PetDetail() {
+function CartPage() {
     return (
         <div>
-            dddd
+            CartPage
         </div>
     )
 }
 
-export default PetDetail
+export default CartPage
