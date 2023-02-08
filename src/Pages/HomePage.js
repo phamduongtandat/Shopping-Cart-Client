@@ -1,13 +1,7 @@
-import React from 'react'
-
-
+import React from "react";
 
 function HomePage() {
-    return (
-        <div>
-            HomePage
-        </div>
-    )
+  return <div>HomePage asdasdsadad 12313213213</div>;
 }
 
-export default HomePage
+export default HomePage;
