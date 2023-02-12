@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function PetItem({ name, img, price, id }) {
     return (
-        <div className="card" style={{ width: 'auto', height: '30rem' }}>
-            <img src={img} className="card-img-top" style={{ height: '18rem' }} alt="..." />
+        <div className="card" style={{ width: 'auto', height: '460px' }}>
+            <img src={img} className="card-img-top" style={{ height: '255px' }} alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{price} $</p>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Header() {
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav style={{position: 'fixed',top: '0',width: '100%',zIndex:1}} className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <img src="https://cdn.pixabay.com/photo/2016/01/13/02/03/byeongsinnyeon-1137035_960_720.png" alt='' width={52} height={52} />
         <div className=" p-2 collapse navbar-collapse">

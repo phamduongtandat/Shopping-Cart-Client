@@ -6,6 +6,7 @@ import PetPage from './Pages/PetPage';
 import Container from './Component/Container';
 import PetDetailPage from './Pages/PetDetailPage';
 import CartPage from './Pages/CartPage';
+import NotFoundPage from './Pages/NotFoundPage';
 function App() {
   // cd reactjs-tutorial
   return (
@@ -17,7 +18,9 @@ function App() {
           <Route path='/Pet' element={<PetPage />} />
           <Route path='/Pet/:detail' element={<PetDetailPage />} />
           <Route path='/Cart' element={<CartPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
+
       </Routes>
 
 
