@@ -16,6 +16,17 @@ function PetList() {
             setLoading(false)
         }, 800);
     }, []);
+
+    const prod = JSON.parse(localStorage.getItem('cartStorage')) ?? [];
+    const handleAddCart = (id) => {
+        const addPet = pets.find(pet => pet.id === id)
+        prod.push(addPet)
+        // console.log('prod', typeof prod)
+
+        localStorage.setItem('cartStorage', JSON.stringify([...prod]))
+
+
+    }
     return (
         loading ? <Loading /> :
             <div className="container">
@@ -27,6 +38,7 @@ function PetList() {
                                 name={pet.name}
                                 price={pet.price}
                                 img={pet.avatar}
+                                onClickForAddCart={handleAddCart}
                             />
                         </div>
                     ))}
