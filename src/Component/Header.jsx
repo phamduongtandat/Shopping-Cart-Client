@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Header() {
+  const storage = JSON.parse(localStorage.getItem('cartStorage')) ?? []
   return (
 
     <nav style={{position: 'fixed',top: '0',width: '100%',zIndex:1}} className="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,7 +17,7 @@ function Header() {
               <Link className="  btn btn-outline-dark " to='/Pet'>Pet</Link>
             </li>
             <li className=" nav-item">
-              <Link className="  btn btn-outline-dark " to='/Cart'>Cart</Link>
+              <Link className="  btn btn-outline-dark " to='/Cart'>Cart <b>{storage.length}</b> </Link>
             </li>
           </ul>
         </div>

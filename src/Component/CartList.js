@@ -1,18 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CartItem from './CartItem'
 import './CartList.css'
 
 function CartList() {
-    const storage = JSON.parse(localStorage.getItem('cartStorage')) ?? []
-    console.log(storage)
+    const [carts, setCarts] = useState(JSON.parse(localStorage.getItem('cartStorage')) ?? []);
+    console.log('aa', carts)
+    const handleRemove = (id) => {
+        const cart = carts.filter(item => item.id !== id)
+        localStorage.setItem('cartStorage', JSON.stringify([...cart]))
+        setCarts([...cart])
+    }
     return (
         <div >
-            {storage.map((prod) => {
-                return <div key={prod.id} >
+            <h1 style={{ color: '#1b4465', textAlign: 'center' }}>Your Cart</h1>
+            {carts.map((prod, index) => {
+                return <div key={index} >
                     <CartItem
+                        id={prod.id}
                         ava={prod.avatar}
                         name={prod.name}
-                        price={prod.price} />
+                        price={prod.price}
+                        amount={prod.quantity}
+                        onRemove={handleRemove} />
                 </div>
             })}
             <footer>

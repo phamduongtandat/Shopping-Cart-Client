@@ -5,7 +5,7 @@ import CartList from '../Component/CartList'
 function CartPage() {
 
     return (
-        <div>
+        <div className='container' >
             <CartList />
         </div>
     )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CartItem({ name, ava, price }) {
+function CartItem({ id, name, ava, price, amount, onRemove }) {
     return (
 
         <section className="cart">
@@ -9,8 +9,8 @@ function CartItem({ name, ava, price }) {
                     <img src={ava} alt='' />
                     <div>
                         <h4>{name}</h4>
-                        <h4 className="item-price">{price}</h4>
-                        <button className="remove-btn">REMOVE</button>
+                        <h4 className="item-price">$ {price}</h4>
+                        <button onClick={() => { onRemove(id) }} className="remove-btn">REMOVE</button>
                     </div>
                     <div>
                         {/* {/* increase amount * /} */}
@@ -19,7 +19,7 @@ function CartItem({ name, ava, price }) {
                                 <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
                             </svg>
                         </button>
-                        <p className="amount">2</p>
+                        <p className="amount">{amount}</p>
                         {/* {/* decrease amount * /} */}
                         <button className="amount-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

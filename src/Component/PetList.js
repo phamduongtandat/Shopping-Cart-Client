@@ -24,6 +24,7 @@ function PetList() {
         // console.log('prod', typeof prod)
 
         localStorage.setItem('cartStorage', JSON.stringify([...prod]))
+        setLoading()
 
 
     }
