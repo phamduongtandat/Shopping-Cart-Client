@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import PetList from '../Component/PetList'
+import PetList from "../Component/PetList";
 
-function PetPage() {
-
-    return (
-        <div>
-            <PetList />
-        </div>
-    )
+function PetPage({ keyWord }) {
+  return (
+    <div>
+      <PetList keyWord={keyWord} />
+    </div>
+  );
 }
 
-export default PetPage
+export default PetPage;
