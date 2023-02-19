@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 
-function Header() {
+function Header({keyWord,setKeyWork}) {
+  const  handleChange =(e) =>{
+    setKeyWork(e.target.value)
+  }
   return (
 
     <nav className="navbar navbar-expand-lg navbar-light bg-primary">
@@ -14,6 +17,17 @@ function Header() {
             </li>
             <li className="nav-item">
               <Link className="nav-link link-info active" to='/Pet'>Pet</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+            <input  class="form-control" placeholder="Tìm kiếm" value={keyWord} 
+                   onChange={handleChange} />
+            </li>
+            <li>
+            <button type="submit" class="btn btn-primary">Submit</button>
             </li>
           </ul>
         </div>
