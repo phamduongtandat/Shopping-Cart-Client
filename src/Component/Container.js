@@ -6,7 +6,9 @@ function Container({ keyWork, setKeyWork }) {
   return (
     <div>
       <Header keyWork={keyWork} setKeyWork={setKeyWork} />
-      <Outlet />
+      <div style={{ marginTop: "100px" }}>
+        <Outlet />
+      </div>
     </div>
   );
 }

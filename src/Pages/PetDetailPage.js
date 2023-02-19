@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PetDetail() {
+function PetDetailPage() {
     return (
         <div>
             dddd
@@ -8,4 +8,4 @@ function PetDetail() {
     )
 }
 
-export default PetDetail
+export default PetDetailPage

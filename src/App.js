@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import HomePage from "./Pages/HomePage";
 import PetPage from "./Pages/PetPage";
 import Container from "./Component/Container";
-import PetDetail from "./Component/PetDetail";
-import { useState } from "react";
+import PetDetailPage from "./Pages/PetDetailPage";
+import CartPage from "./Pages/CartPage";
+import NotFoundPage from "./Pages/NotFoundPage";
 function App() {
   // cd reactjs-tutorial
   const [keyWord, setKeyWork] = useState("");
@@ -16,7 +18,9 @@ function App() {
         >
           <Route index element={<HomePage />} />
           <Route path="/Pet" element={<PetPage keyWord={keyWord} />} />
-          <Route path="/Pet/:detail" element={<PetDetail />} />
+          <Route path="/Pet/:detail" element={<PetDetailPage />} />
+          <Route path="/Cart" element={<CartPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>
