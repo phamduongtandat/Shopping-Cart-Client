@@ -1,6 +1,10 @@
 import React from 'react'
+import { useContext } from 'react';
+import { CartContext } from '../Context/CartContext';
 
 function CartItem({ id, name, ava, price, amount, onRemove }) {
+    const { handleRemove } = useContext(CartContext)
+
     return (
 
         <section className="cart">
@@ -10,7 +14,7 @@ function CartItem({ id, name, ava, price, amount, onRemove }) {
                     <div>
                         <h4>{name}</h4>
                         <h4 className="item-price">$ {price}</h4>
-                        <button onClick={() => { onRemove(id) }} className="remove-btn">REMOVE</button>
+                        <button onClick={() => { handleRemove(id) }} className="remove-btn">REMOVE</button>
                     </div>
                     <div>
                         {/* {/* increase amount * /} */}
