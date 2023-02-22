@@ -7,7 +7,7 @@ const SearchProvider = ({ children }) => {
         setKeyWord(e.target.value)
 
     }
-    console.log('keyWord', keyWord)
+    //console.log('keyWord', keyWord)
     return (
         <SearchContext.Provider value={{ keyWord, setKeyWord, handleSearch }}>
             {children}

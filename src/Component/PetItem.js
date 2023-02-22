@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { CartContext } from "../Context/CartContext";
 import { useContext } from "react";
-function PetItem({ name, img, price, id, onClickForAddCart }) {
+function PetItem({ name, img, price, id, pet }) {
     const { handleAddCart } = useContext(CartContext)
     return (
         <div className="card" style={{ width: 'auto', height: '460px' }}>
@@ -14,7 +14,7 @@ function PetItem({ name, img, price, id, onClickForAddCart }) {
 
             <div className="card-body">
                 <Link to={`/Pet/${id}`} className=" btn btn-outline-info card-link">Detail</Link>
-                <button onClick={() => { handleAddCart(id) }} type="button" className=" card-link btn btn-outline-success">Add cart</button>
+                <button onClick={() => { handleAddCart(id, pet) }} type="button" className=" card-link btn btn-outline-success">Add cart</button>
             </div>
         </div>
 

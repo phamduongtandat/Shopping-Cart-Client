@@ -4,14 +4,14 @@ import PetItem from "./PetItem";
 import Loading from "./Loading";
 import "../App.css";
 import { PetsContext } from "../Context/PetsContext";
-import Search, { SearchContext } from "../Context/SearchContext";
+import { SearchContext } from "../Context/SearchContext";
 
 
 
 function PetList() {
   const { pets, loading } = useContext(PetsContext)
   const { keyWord } = useContext(SearchContext)
-  console.log('keyWord', keyWord)
+  //console.log('keyWord', keyWord)
 
   const searchItems =
     keyWord.length > 0
@@ -34,6 +34,7 @@ function PetList() {
         {searchItems.map((pet) => (
           <div key={pet.id} className="col-lg-4 col-sm-6 mb-3 mt-3">
             <PetItem
+              pet={pet}
               id={pet.id}
               name={pet.name}
               price={pet.price}

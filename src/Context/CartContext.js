@@ -9,40 +9,62 @@ const CartProvider = ({ children }) => {
     const { setAmount } = useContext(AmountContext)
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cartStorage")) ?? []);
 
-    const handleAddCart = (id) => {
 
 
+    const calTotal = () => {
+        const amountTotal = cart.reduce((total, item) => {
+            const sum = total + item.quantity
+            return sum
+        }, 0)
+        localStorage.setItem("amountItem", JSON.stringify(amountTotal))
+        setAmount(amountTotal)
+        return amountTotal
+    }
+    //const number = calTotal()
+    //console.log(number)
+    calTotal()
 
+    const handleIncrement = (item) => {
+        const cloneCart = [...cart]
+        const cloneItem = { ...item }
+        const index = cart.findIndex(x => x.id === item.id)
+        const changeQtyItem = { ...cloneItem, quantity: item.quantity + 1 }
+        cloneCart[index] = changeQtyItem
+        //localStorage.setItem("amountItem", JSON.stringify(calTotal()))
+        setCart([...cloneCart])
+        //setAmount(number)
+        localStorage.setItem("cartStorage", JSON.stringify([...cloneCart]));
+        console.log('item', cart)
+    }
 
+    const handleAddCart = (id, item) => {
         const cartItem = cart.find((item) => item.id === id)
         if (cartItem === undefined) {
             const addPet = pets.find((pet) => pet.id === id);
             setCart([...cart, addPet]);
-            setAmount(cart.length + 1)
             localStorage.setItem("cartStorage", JSON.stringify([...cart, addPet]));
-
+            //calTotal()
+            //setAmount(number)
+            //localStorage.setItem("amountItem", JSON.stringify(number))
         } else {
-            alert('exist')
+            alert('The pet exist on your cart')
         }
     };
 
 
-
-
-
-
-
     const handleRemove = (id) => {
         const remainItem = cart.filter(item => item.id !== id)
-        localStorage.setItem('cartStorage', JSON.stringify([...remainItem]))
         setCart([...remainItem])
-        setAmount(cart.length - 1)
+        localStorage.setItem('cartStorage', JSON.stringify([...remainItem]))
+        //setAmount(number)
+        //localStorage.setItem("amountItem", JSON.stringify(calTotal()))
     }
 
 
-    return (<CartContext.Provider value={{ cart, handleRemove, handleAddCart, setCart }}>
-        {children}
-    </CartContext.Provider>)
+    return (
+        <CartContext.Provider value={{ cart, handleRemove, handleAddCart, setCart, handleIncrement }}>
+            {children}
+        </CartContext.Provider>)
 };
 
 export { CartContext, CartProvider }

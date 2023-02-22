@@ -7,7 +7,7 @@ import { CartContext } from '../Context/CartContext';
 function CartList() {
 
     const { cart } = useContext(CartContext)
-    console.log('aa', cart)
+
 
     return (
         <div >
@@ -17,6 +17,7 @@ function CartList() {
                 cart.map((prod, index) => {
                     return <div key={index} >
                         <CartItem
+                            itemCart={prod}
                             id={prod.id}
                             ava={prod.avatar}
                             name={prod.name}
