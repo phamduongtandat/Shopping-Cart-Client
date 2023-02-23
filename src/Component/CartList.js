@@ -6,7 +6,7 @@ import { CartContext } from '../Context/CartContext';
 
 function CartList() {
 
-    const { cart, clearAll } = useContext(CartContext)
+    const { grossMoney, cart, clearAll } = useContext(CartContext)
 
 
     return (
@@ -32,7 +32,7 @@ function CartList() {
                 <hr />
                 <div className="cart-total">
                     <h4>
-                        total <span>122</span>
+                        total <span>$ {grossMoney.toFixed(2)}</span>
                     </h4>
                 </div>
                 <button onClick={clearAll} className="btnn clear-btn">

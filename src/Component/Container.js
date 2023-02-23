@@ -8,6 +8,7 @@ function Container() {
   return (
     <div>
       <Header />
+
       <div style={{ marginTop: "100px" }}>
         <Outlet />
       </div>

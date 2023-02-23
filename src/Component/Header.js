@@ -44,7 +44,9 @@ function Header() {
             </li>
 
             <li className=" position-relative nav-item">
-              <Link className="  btn btn-outline-dark " to='/Cart'>Cart  </Link>
+              <Link className="  btn btn-outline-dark " to='/Cart'>
+                <i style={{ color: '#4E31AA' }} className={amount > 0 ? 'fa-beat fa-solid fa-xl fa-cart-arrow-down' : 'fa-solid fa-xl fa-cart-arrow-down'}></i>
+              </Link>
               {amount > 0 && <BagdeCart amount={amount} />}
             </li>
 

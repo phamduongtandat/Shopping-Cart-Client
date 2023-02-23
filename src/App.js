@@ -25,8 +25,9 @@ function App() {
               </SearchProvider>
             </CartProvider>}
           />
-          <Route path="/Pet/:detail" element={<PetDetailPage />} />
+          <Route path="/Pet/:detail" element={<CartProvider><PetDetailPage /></CartProvider>} />
           <Route path="/Cart" element={<CartProvider><CartPage /></CartProvider>} />
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
