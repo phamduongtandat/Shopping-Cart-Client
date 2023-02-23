@@ -9,7 +9,10 @@ const CartProvider = ({ children }) => {
     const { setAmount } = useContext(AmountContext)
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cartStorage")) ?? []);
 
-
+    const clearAll = () => {
+        setCart([])
+        localStorage.setItem('cartStorage', JSON.stringify([]))
+    }
 
     const calTotal = () => {
         const amountTotal = cart.reduce((total, item) => {
@@ -47,7 +50,13 @@ const CartProvider = ({ children }) => {
             //setAmount(number)
             //localStorage.setItem("amountItem", JSON.stringify(number))
         } else {
-            alert('The pet exist on your cart')
+            const cloneCart = [...cart]
+            const index = cloneCart.findIndex(x => x.id === item.id)
+            const cloneItem = { ...cloneCart[index] }
+            const changeQtyItem = { ...cloneItem, quantity: cloneItem.quantity + 1 }
+            cloneCart[index] = changeQtyItem
+            setCart([...cloneCart])
+            localStorage.setItem("cartStorage", JSON.stringify([...cloneCart]));
         }
     };
 
@@ -62,7 +71,7 @@ const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ cart, handleRemove, handleAddCart, setCart, handleIncrement }}>
+        <CartContext.Provider value={{ cart, handleRemove, handleAddCart, setCart, handleIncrement, clearAll }}>
             {children}
         </CartContext.Provider>)
 };

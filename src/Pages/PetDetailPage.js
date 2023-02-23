@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 function PetDetailPage() {
     const { detail } = useParams()
     const [petDetail, setPetDetail] = useState([]);
-    console.log(petDetail)
+
     useEffect(() => {
         axios
             .get(`https://636c82727f47ef51e14a9f18.mockapi.io/api/products/${detail}`)
