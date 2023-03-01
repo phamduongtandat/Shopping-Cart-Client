@@ -6,17 +6,26 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { PetsProvider } from './Context/PetsContext';
 import { AmountProvider } from './Component/Header';
+import { SearchProvider } from './Context/SearchContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+
+
     <BrowserRouter>
-      <PetsProvider>
-        <AmountProvider>
-          <App />
-        </AmountProvider>
-      </PetsProvider>
+      <SearchProvider>
+
+        <PetsProvider>
+          <AmountProvider>
+            <App />
+          </AmountProvider>
+        </PetsProvider>
+      </SearchProvider>
+
+
+
     </BrowserRouter>
   </React.StrictMode>
 );

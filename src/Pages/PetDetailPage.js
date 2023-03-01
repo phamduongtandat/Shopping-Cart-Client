@@ -1,22 +1,31 @@
 import "../App.css";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useContext } from 'react';
 import { CartContext } from "../Context/CartContext";
+import Loading from "../Component/Loading";
 
 function PetDetailPage() {
     const { detail } = useParams()
+    const navigate = useNavigate()
     const [petDetail, setPetDetail] = useState([]);
     const { handleAddCart } = useContext(CartContext)
+    const isLogin = JSON.parse(localStorage.getItem('isLogin'))
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         axios
             .get(`https://636c82727f47ef51e14a9f18.mockapi.io/api/products/${detail}`)
-            .then((api) => setPetDetail(api.data));
+            .then((api) => setPetDetail(api.data))
+            .finally(() => { setLoading(false) })
 
     }, [detail]);
-    return (
+
+
+
+    return loading ? <Loading /> : (
 
 
 
@@ -35,7 +44,13 @@ function PetDetailPage() {
                                 <p className="card-text"><small className="text-danger ">Favourist : {petDetail.favourite}</small></p>
                             </div>
                             <div style={{ position: 'relative', zIndex: '1' }}>
-                                <button onClick={() => { handleAddCart(petDetail.id, petDetail) }} className=" btn-pet-detail">PLEASE BUY ME </button>
+                                {isLogin
+                                    ?
+                                    <button onClick={() => { handleAddCart(petDetail.id, petDetail) }} className=" btn-pet-detail">PLEASE BUY ME </button>
+                                    :
+                                    <button onClick={() => { navigate('/Login') }} className=" btn-pet-detail">PLEASE BUY ME </button>}
+
+
                             </div>
                         </div>
                     </div>

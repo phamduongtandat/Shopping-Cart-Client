@@ -1,15 +1,18 @@
 import React, { createContext, useState } from "react";
+
+
+
 const SearchContext = createContext();
 const SearchProvider = ({ children }) => {
 
-    const [keyWord, setKeyWord] = useState("");
+    const [word, setWord] = useState("");
     const handleSearch = (e) => {
-        setKeyWord(e.target.value)
+        setWord(e.target.value)
 
     }
-    //console.log('keyWord', keyWord)
+
     return (
-        <SearchContext.Provider value={{ keyWord, setKeyWord, handleSearch }}>
+        <SearchContext.Provider value={{ word, setWord, handleSearch }}>
             {children}
         </SearchContext.Provider>)
 };

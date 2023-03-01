@@ -8,11 +8,9 @@ const PetsProvider = ({ children }) => {
     useEffect(() => {
         axios
             .get("https://636c82727f47ef51e14a9f18.mockapi.io/api/products")
-            .then((api) => setPets(api.data));
+            .then((api) => setPets(api.data))
+            .finally(() => { setLoading(false) })
 
-        setTimeout(() => {
-            setLoading(false);
-        }, 800);
     }, []);
 
     return (

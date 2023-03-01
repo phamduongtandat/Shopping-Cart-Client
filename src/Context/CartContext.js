@@ -13,7 +13,7 @@ const CartProvider = ({ children }) => {
         total += item.quantity * item.price
         return total
     }, 0)
-    console.log(grossMoney)
+    //console.log(grossMoney)
     const calTotal = () => {
         const amountTotal = cart.reduce((total, item) => {
             const sum = total + item.quantity
@@ -46,7 +46,7 @@ const CartProvider = ({ children }) => {
         cloneCart[index] = changeQtyItem
         setCart([...cloneCart])
         localStorage.setItem("cartStorage", JSON.stringify([...cloneCart]));
-        console.log('item', cart)
+        //console.log('item', cart)
     }
 
     const handleDecrement = (item) => {
