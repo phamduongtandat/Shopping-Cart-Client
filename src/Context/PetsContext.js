@@ -7,8 +7,8 @@ const PetsProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         axios
-            .get("https://636c82727f47ef51e14a9f18.mockapi.io/api/products")
-            .then((api) => setPets(api.data))
+            .get("http://localhost:8080/api/v1/product")
+            .then((api) => setPets(api.data.data))
             .finally(() => { setLoading(false) })
 
     }, []);

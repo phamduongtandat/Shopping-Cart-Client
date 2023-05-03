@@ -1,7 +1,10 @@
-import React, { useContext, useState, createContext, } from 'react'
+import React, { useContext, useState, createContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import BagdeCart from './BagdeCart';
 import Search from './Search';
+//import jwtDecode from "jwt-decode";
+//import axios from 'axios';
+import checkLogin from './../Utils/checkLogin';
 
 
 const AmountContext = createContext();
@@ -17,14 +20,44 @@ const AmountProvider = ({ children }) => {
 
 
 function Header() {
+  //const [cart, setCart] = useState([])
 
   const { amount } = useContext(AmountContext)
   const navigate = useNavigate()
-  let user = JSON.parse(localStorage.getItem('user'))
-  let isLogin = JSON.parse(localStorage.getItem('isLogin'))
+
+  //let user = JSON.parse(localStorage.getItem('user'))
+  //let isLogin = JSON.parse(localStorage.getItem('isLogin'))
+
+  // useEffect(() => {
+  //   if (isLogin) {
+  //     axios.get('')
+  //       .then((res) => {
+  //         setCart()
+  //       })
+  //       .catch((err) => {
+
+  //       })
+
+  //   }
+  // }, [])
+
+  // let access_token = JSON.parse(localStorage.getItem('access_token'))
+  // if (!access_token) {
+  //   return isLogin = false
+  // }
+
+  // const user = jwtDecode(access_token)
+
+  // if (user.exp > new Date().getTime() / 1000) {
+  //   isLogin = true
+  // } else {
+  //   isLogin = false
+  // }
+
+  let { isLogin, user } = checkLogin()
 
   const handLogout = () => {
-    localStorage.setItem('isLogin', JSON.stringify(false));
+    localStorage.removeItem('access_token')
     navigate('/Login')
   }
 
@@ -43,7 +76,6 @@ function Header() {
 
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
           <ul className=" d-flex align-items-center  navbar-nav me-auto mb-2 mb-lg-0 ">
 
             <div className=" d-flex nav-item me-5">
@@ -60,17 +92,23 @@ function Header() {
                 ?
                 <li className=" position-relative nav-item">
                   <Link className="  btn  " to='/Cart'>
+
                     <i style={{ color: '#4E31AA' }} className={amount > 0 ? 'fa-beat fa-solid fa-xl fa-cart-arrow-down' : 'fa-solid fa-xl fa-cart-arrow-down'}></i>
+
                   </Link>
+
                   {amount > 0 && <BagdeCart amount={amount} />}
                 </li>
                 :
                 <li className=" position-relative nav-item">
-                  <Link className="  btn  " to='/Login'>
+                  <Link className="btn" to='/Login'>
+
                     <i style={{ color: '#4E31AA' }} className='fa-solid fa-xl fa-cart-arrow-down'></i>
+
                   </Link>
                 </li>
               }
+
             </div>
 
 
@@ -83,7 +121,7 @@ function Header() {
 
               <li className=" nav-item">
                 <div className=" text-danger fs-5 btn">
-                  Welcome  {user.fullName.toUpperCase()}
+                  Welcome  {user.username.toUpperCase()}
                 </div>
 
                 <button onClick={handLogout} className="btn btn-warning ">Logout</button>
@@ -93,7 +131,7 @@ function Header() {
 
               <div className="d-flex nav-item p-1 navbar-nav me-auto ms-5 mb-lg-0">
                 <li className=" ">
-                  <Link className="btn btn-outline-dark" to='/Login'>Login</Link>
+                  <Link className="btn  btn-outline-dark" to='/Login'>Login</Link>
                 </li>
 
                 <li className=" ">

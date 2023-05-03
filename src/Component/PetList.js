@@ -23,13 +23,13 @@ function PetList() {
 
       <div className="row p-2">
         {pets.filter((item) => item.name.toLowerCase().includes(word.toLowerCase())).map((pet) => (
-          <div key={pet.id} className="col-lg-4 col-sm-6 mb-3 mt-3">
+          <div key={pet._id} className="col-lg-4 col-sm-6 mb-3 mt-3">
             <PetItem
               pet={pet}
-              id={pet.id}
+              id={pet._id}
               name={pet.name}
               price={pet.price}
-              img={pet.avatar}
+              img={pet.image}
             />
           </div>
         ))}
