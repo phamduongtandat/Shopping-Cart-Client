@@ -76,7 +76,7 @@ function Header() {
 
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className=" d-flex align-items-center  navbar-nav me-auto mb-2 mb-lg-0 ">
+          <ul className=" d-flex justify-content-between align-items-center  navbar-nav me-auto mb-2 mb-lg-0 ">
 
             <div className=" d-flex nav-item me-5">
 
@@ -120,11 +120,11 @@ function Header() {
             {isLogin ?
 
               <li className=" nav-item">
-                <div className=" text-danger fs-5 btn">
+                <div className=" text-light fs-5 btn">
                   Welcome  {user.username.toUpperCase()}
                 </div>
 
-                <button onClick={handLogout} className="btn btn-warning ">Logout</button>
+                <button onClick={handLogout} style={{ padding: '5px 5px', border: 'none' }}>Logout</button>
               </li>
 
               :

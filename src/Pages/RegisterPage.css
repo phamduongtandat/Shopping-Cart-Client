@@ -75,7 +75,7 @@
     border-color: #f33a58;
   }
   
-  span {
+  .form-group span {
     color: #f33a58;
     font-size: small;
     font-style: italic;

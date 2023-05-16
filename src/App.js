@@ -11,6 +11,8 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import { RegisterProvider } from "./Context/RegisterContext";
 import { LoginProvider } from "./Context/LoginContext";
+import AdminPage from './Pages/Admin/AdminPage';
+//import checkLogin from './Utils/checkLogin';
 
 function App() {
 
@@ -34,6 +36,7 @@ function App() {
           <Route path="/Pet/:detail" element={<CartProvider><PetDetailPage /></CartProvider>} />
           <Route path="/Cart" element={<CartProvider><CartPage /></CartProvider>} />
           <Route path='/Register' element={<RegisterProvider><RegisterPage /></RegisterProvider>} />
+          <Route path="/Admin" element={<AdminPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
 

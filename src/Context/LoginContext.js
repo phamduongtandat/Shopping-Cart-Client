@@ -33,6 +33,7 @@ const LoginProvider = ({ children }) => {
 
                 if (isAdmin) {
                     console.log('Trang admin')
+                    return navigate('/Admin')
                 }
 
                 //       _____  _____

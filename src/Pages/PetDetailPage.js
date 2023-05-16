@@ -14,7 +14,7 @@ function PetDetailPage() {
     const { handleAddCart } = useContext(CartContext)
     //const isLogin = JSON.parse(localStorage.getItem('isLogin'))
     const [loading, setLoading] = useState(true);
-    let isLogin = checkLogin()
+    let { isLogin } = checkLogin()
 
     useEffect(() => {
         axios

@@ -19,7 +19,7 @@ const checkLogin = () => {
     } else {
         return { isLogin: false }
     }
-    //return {isLogin:false}
+
 }
 
 export default checkLogin
