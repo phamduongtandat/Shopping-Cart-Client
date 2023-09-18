@@ -47,7 +47,7 @@ const RegisterProvider = ({ children }) => {
                 email: emailValue,
                 password: passValue
             }
-            axios.post('http://localhost:8080/api/v1/auth/sign-up', user)
+            axios.post('https://shopping-cart-zjgb.onrender.com/api/v1/auth/sign-up', user)
                 .then((res) => {
                     localStorage.setItem('user', JSON.stringify(user))
                     navigate('/Login')

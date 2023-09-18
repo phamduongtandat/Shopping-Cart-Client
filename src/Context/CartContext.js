@@ -19,7 +19,7 @@ const CartProvider = ({ children }) => {
             return
         }
 
-        axios.get('http://localhost:8080/api/v1/cart/get-cart', {
+        axios.get('https://shopping-cart-zjgb.onrender.com/api/v1/cart/get-cart', {
             headers: {
                 Authorization: JSON.parse(localStorage.getItem("access_token"))
             }

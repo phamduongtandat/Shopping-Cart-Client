@@ -25,7 +25,7 @@ function AdminProduct() {
 
     useEffect(() => {
         if (isDel) {
-            axios.delete(`http://localhost:8080/api/v1/product/${rowSelected}`)
+            axios.delete(`https://shopping-cart-zjgb.onrender.com/api/v1/product/${rowSelected}`)
                 .then((api) => {
                     //setDetail(api.data.data)
                     console.log('data :', api.data.data)
@@ -48,7 +48,7 @@ function AdminProduct() {
     //       _____ FETCH PROD DETAIL _____
 
     const fetchDetail = (id) => {
-        axios.get(`http://localhost:8080/api/v1/product/${id}`)
+        axios.get(`https://shopping-cart-zjgb.onrender.com/api/v1/product/${id}`)
             .then((api) => {
                 setDetail(api.data.data)
             })
@@ -74,7 +74,7 @@ function AdminProduct() {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8080/api/v1/product')
+            .get('https://shopping-cart-zjgb.onrender.com/api/v1/product')
             .then((api) => {
                 setProdData(api.data.data)
                 //setIsModalOpen(false)
@@ -112,7 +112,7 @@ function AdminProduct() {
     const onFinish = (values) => {
         if (detail) {
             console.log('detail :', detail._id)
-            axios.put(`http://localhost:8080/api/v1/product/${detail._id}`, values)
+            axios.put(`https://shopping-cart-zjgb.onrender.com/api/v1/product/${detail._id}`, values)
                 .then((api) => {
                     console.log(' api:', api.data)
                     if (api.data.status === 1) {
@@ -126,7 +126,7 @@ function AdminProduct() {
                 })
         } else {
             axios
-                .post('http://localhost:8080/api/v1/product', values)
+                .post('https://shopping-cart-zjgb.onrender.com/api/v1/product', values)
                 .then((api) => {
                     if (api.data.status === 1) {
                         setIsModalOpen(false)

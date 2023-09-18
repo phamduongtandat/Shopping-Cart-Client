@@ -25,7 +25,7 @@ const LoginProvider = ({ children }) => {
             return setMessage({ messPass: 'Please fill your password' })
         }
 
-        axios.post('http://localhost:8080/api/v1/auth/log-in', { email: emailLogin, password: passLogin }, { withCredentials: true })
+        axios.post('https://shopping-cart-zjgb.onrender.com/api/v1/auth/log-in', { email: emailLogin, password: passLogin }, { withCredentials: true })
             .then(res => {
                 localStorage.setItem('access_token', JSON.stringify(res.data.data.access_token))
 
@@ -38,7 +38,7 @@ const LoginProvider = ({ children }) => {
 
                 //       _____  _____
 
-                axios.post('http://localhost:8080/api/v1/cart/add-cart', [], {
+                axios.post('https://shopping-cart-zjgb.onrender.com/api/v1/cart/add-cart', [], {
                     headers: {
                         Authorization: JSON.parse(localStorage.getItem("access_token"))
                     }

@@ -18,7 +18,7 @@ function PetDetailPage() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8080/api/v1/product/${detail}`)
+            .get(`https://shopping-cart-zjgb.onrender.com/api/v1/product/${detail}`)
             .then((api) => setPetDetail(api.data.data))
             .finally(() => { setLoading(false) })
 

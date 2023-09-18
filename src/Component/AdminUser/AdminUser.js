@@ -6,7 +6,7 @@ function AdminUser() {
     const [userData, setUserData] = useState([])
     useEffect(() => {
         axios
-            .get('http://localhost:8080/api/v1/users')
+            .get('https://shopping-cart-zjgb.onrender.com/api/v1/users')
             .then((api) => {
                 setUserData(api.data.data)
 

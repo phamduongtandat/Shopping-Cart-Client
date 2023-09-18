@@ -7,7 +7,7 @@ const PetsProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         axios
-            .get("http://localhost:8080/api/v1/product")
+            .get("https://shopping-cart-zjgb.onrender.com/api/v1/product")
             .then((api) => setPets(api.data.data))
             .finally(() => { setLoading(false) })
 
